@@ -1,10 +1,10 @@
-#focusgroup{
+#game{
     display:flex;
     justify-content: space-around;
-    height:200px;
+    height:100px;
 }
 
-#focusgroup img{
-    height:50px;
-    width:50px;
+#game img{
+    height:30px;
+    width:30px;
 }
