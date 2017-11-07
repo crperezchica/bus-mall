@@ -1,0 +1,10 @@
+#focusgroup{
+    display:flex;
+    justify-content: space-around;
+    height:200px;
+}
+
+#focusgroup img{
+    height:50px;
+    width:50px;
+}
