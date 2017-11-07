@@ -1,14 +1,16 @@
 
 let clicks = 0;
 
-
-const bag = new Product('bag', 'bag.jpg');
+//These are my instances of the new products that will run through my constructor function
+const bag = new Product('bag', 'bag.jpg'); //img needs to be a string because we are passing it through the constructor function
 const banana = new Product('banana', 'banana.jpg');
 const bathroom = new Product('bathroom', 'bathroom.jpg');
 
 const products = [bag,banana,bathroom];
 
-for (let i = 0; i < 6; i++){
+console.log(products); //This is a good breakpoint
+
+for (let i = 0; i < 3; i++){
     appendRandomProduct();
 }
 
@@ -17,7 +19,7 @@ game.addEventListener('click', clickHandler);
 
 function clickHandler (e) {
     const clickedProduct = e.target;
-    if (clickedProduct.id === 'focusgroup') return;
+    if (clickedProduct.id === 'game') return;
     for (let i = 0; i < products.length; i++) {
         const productClass = clickedProduct.classList.value;
         if (products[i].type === productClass) {
@@ -26,15 +28,16 @@ function clickHandler (e) {
         }
     }
 
-}
 
-clickedProduct.remove();
 
-appendRandomProduct();
+    clickedProduct.remove();
 
-clicks++;
-if (clicks >=5) {
-    endGame();
+    appendRandomProduct();
+
+    clicks++;
+    if (clicks >=  5 ) {
+        endGame();
+    }
 }
 
 function appendRandomProduct (){
