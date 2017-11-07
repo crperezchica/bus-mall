@@ -1,5 +1,5 @@
 
-// let clicks = 0;
+let clicks = 0;
 
 
 const bag = new Product('bag', 'bag.jpg');
@@ -8,55 +8,49 @@ const bathroom = new Product('bathroom', 'bathroom.jpg');
 
 const products = [bag,banana,bathroom];
 
-function Product(type, src) {
-    this.type = type;
-    this.src = './images/' + src;
-    this.vote = 0;
-    this.display = 0;
-
-    // allProducts.push(this);
+for (let i = 0; i < 6; i++){
+    appendRandomProduct();
 }
 
+const game = document.getElementById('game');
+game.addEventListener('click', clickHandler);
 
-// randomIndex: function {
-//     randomProduct=Products[Math.floor(Math.random() * products.length)];
-// }
-Product.prototype.wasVote = function (){
-    this.vote += 1;
-};
+function clickHandler (e) {
+    const clickedProduct = e.target;
+    if (clickedProduct.id === 'focusgroup') return;
+    for (let i = 0; i < products.length; i++) {
+        const productClass = clickedProduct.classList.value;
+        if (products[i].type === productClass) {
+            products[i].wasVote();
+            console.log('number of votes', products[i].vote);
+        }
+    }
 
-Product.prototype.wasDisplay = function (){
-    this.display += 1;
-};
-
-Product.prototype.render = function (){
-    const ele = document.createElement('img');
-    ele.src = this.src;
-    ele.name=this.name;
-    // ele.classList.add(this.type);
-    return ele;
-};
-
-
-
-
-
-// for (let i = 0; i < 3; i++){
-//     appendProduct();
-// }
-
-const focusgroup = document.getElementById('focusgroup');
-
-function appendRandomProduct (){
-    const focusGroup = document.getElementById('focusGroup');
-    const randomProduct = products[Math.floor(Math.random() * products.length)];
-    const randomProductEle = randomProduct.render(); //returns img element
-    focusgroup.appendChild(randomProductEle);
 }
 
-
+clickedProduct.remove();
 
 appendRandomProduct();
+
+clicks++;
+if (clicks >=5) {
+    endGame();
+}
+
+function appendRandomProduct (){
+    const game = document.getElementById('game');
+    const randomProduct = products[Math.floor(Math.random() * products.length)];
+    const randomProductEle = randomProduct.render(); //returns img element
+    game.appendChild(randomProductEle);
+}
+
+
+function endGame () {
+    const game = document.getElementById('game');
+    game.removeEventListener('click', clickHandler);
+    console.table(products);
+}
+
 
 
 // boots,breakfast,bubblegum,chair,cthulhu,dog,dragon,pen,pet,scissors,shark,sweep,tauntaun,unicorn,usb,water,wine
