@@ -2,14 +2,14 @@
 function Product(type, src) {
     this.type = type;
     this.src = './images/' + src;
-    this.vote = 0;
+    this.voted = 0;
     // this.display = 0;
 
     // allProducts.push(this);
 }
 
-Product.prototype.wasVote = function (){
-    this.vote += 1;
+Product.prototype.wasVoted = function (){
+    this.voted += 1;
 };
 
 // Product.prototype.wasDisplay = function (){
