@@ -23,8 +23,8 @@ function clickHandler (e) {
     for (let i = 0; i < products.length; i++) {
         const productClass = clickedProduct.classList.value;
         if (products[i].type === productClass) {
-            products[i].wasVote();
-            console.log('number of votes', products[i].vote);
+            products[i].wasVoted();
+            console.log('number of votes', products[i].voted);
         }
     }
 
@@ -51,10 +51,50 @@ function appendRandomProduct (){
 function endGame () {
     const game = document.getElementById('game');
     game.removeEventListener('click', clickHandler);
+    
     console.table(products);
+    drawChart(); //This will call the chart to create once the game ends. 
 }
 
+function drawChart () {
 
+
+    const productNames = [];
+    const votedData= [];
+
+    for ( let i = 0; i < products.length; i++) {
+        const product = products[i];
+        console.log(product);
+        productNames.push(product.type);
+        votedData.push(product.voted);
+    }
+    //Product {type: "bag", src: "./images/bag.jpg", voted: 0} 
+    const chartCanvas = document.getElementById('chart');
+    const chartCtx = chartCanvas.getContext('2d');
+
+    const chart = new Chart (
+        chartCtx,
+        {
+            type:'bar',
+            data: {
+                labels: productNames,
+                datasets: [
+                    {
+                        label: 'Number of votes',
+                        data: votedData,
+                        backgroundColor: 'rgba(255,100,20,1)'
+                    }
+                ]
+            },
+            options: {
+                title:{
+                    display: true,
+                    text: 'Products Voted'
+                }
+            }
+        }
+    );
+}
 
 // boots,breakfast,bubblegum,chair,cthulhu,dog,dragon,pen,pet,scissors,shark,sweep,tauntaun,unicorn,usb,water,wine
 
