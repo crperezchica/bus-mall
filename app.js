@@ -5,8 +5,25 @@ let clicks = 0;
 const bag = new Product('bag', 'bag.jpg'); //img needs to be a string because we are passing it through the constructor function
 const banana = new Product('banana', 'banana.jpg');
 const bathroom = new Product('bathroom', 'bathroom.jpg');
+const boots = new Product('boots', 'boots.jpg');
+const breakfast = new Product('breakfast', 'breakfast.jpg');
+const bubblegum = new Product('bubblegum', 'bubblegum.jpg');
+const chair = new Product('chair', 'chair.jpg');
+const cthulhu = new Product ('cthulhu', 'cthulhu.jpg');
+const dog = new Product('dog', 'dog-duck.jpg');
+const dragon = new Product('dragon', 'dragon.jpg');
+const pen = new Product('pen', 'pen.jpg');
+const pet = new Product('pet', 'pet-sweep.jpg');
+const scissors = new Product('scissors', 'scissors.jpg');
+const shark = new Product('shark', 'shark.jpg');
+const sweep = new Product('sweep', 'sweep.png');
+const tauntaun = new Product('tauntaun', 'tauntaun.jpg');
+const unicorn = new Product('unicorn', 'unicorn.jpg');
+const usb = new Product ('usb', 'usb.gif');
+const water = new Product ('water', 'water-can.jpg');
+const wine = new Product ('wine', 'wine-glass.jpg');
 
-const products = [bag,banana,bathroom];
+const products = [bag,banana,bathroom,boots,breakfast,bubblegum,chair,cthulhu,dog,dragon,pen,pet,scissors,shark,sweep,tauntaun,unicorn,usb,water,wine];
 
 console.log(products); //This is a good breakpoint
 
@@ -35,7 +52,7 @@ function clickHandler (e) {
     appendRandomProduct();
 
     clicks++;
-    if (clicks >=  5 ) {
+    if (clicks >=  20 ) {
         endGame();
     }
 }
@@ -96,22 +113,5 @@ function drawChart () {
     );
 }
 
-// boots,breakfast,bubblegum,chair,cthulhu,dog,dragon,pen,pet,scissors,shark,sweep,tauntaun,unicorn,usb,water,wine
 
-// const boots = new Product('boots', 'boots.jpg');
-// const breakfast = new Product('breakfast', 'breakfast.jpg');
-// const bubblegum = new Product('bubblegum', 'bubblegum.jpg');
-// const chair = new Product('chair', 'chair.jpg');
-// const cthulhu = new Product ('cthulhu', 'cthulhu.jpg');
-// const dog = new Product('dog', 'dog-duck.jpg');
-// const dragon = new Product('dragon', 'dragon.jpg');
-// const pen = new Product('pen', 'pen.jpg');
-// const pet = new Product('pet', 'pet-sweep.jpg');
-// const scissors = new Product('scissors', 'scissors.jpg');
-// const shark = new Product('shark', 'shark.jpg');
-// const sweep = new Product('sweep', 'sweep.png');
-// const tauntaun = new Product('tauntaun', 'tauntaun.jpg');
-// const unicorn = new Product('unicorn', 'unicorn.jpg');
-// const usb = new Product ('usb', 'usb.gif');
-// const water = new Product ('water', 'water-can.jpg');
-// const wine = new Product ('wine', 'wine-glass.jpg');
+
