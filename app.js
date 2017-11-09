@@ -1,40 +1,54 @@
 
 let clicks = 0;
-// let fruits = [];
+let products = [];
 
-// if (localStorage.products) {
-//     console.log('what products');
-// }
+if (localStorage.products) {
+    console.log('what products');
 
-// const fruitsArray = JSON.parse(localStorage.)
+    //if we have products in localStorage get them, instantiate them and put them in our products array
+    //Products Array is an array of object literals - they are not products
+    const productsArray = JSON.parse(localStorage.products);
+    console.log('productsArray:', productsArray);
 
-//These are my instances of the new products that will run through my constructor function
-const bag = new Product('bag', 'bag.jpg'); //img needs to be a string because we are passing it through the constructor function
-const banana = new Product('banana', 'banana.jpg');
-const bathroom = new Product('bathroom', 'bathroom.jpg');
-const boots = new Product('boots', 'boots.jpg');
-const breakfast = new Product('breakfast', 'breakfast.jpg');
-const bubblegum = new Product('bubblegum', 'bubblegum.jpg');
-const chair = new Product('chair', 'chair.jpg');
-const cthulhu = new Product ('cthulhu', 'cthulhu.jpg');
-const dog = new Product('dog', 'dog-duck.jpg');
-const dragon = new Product('dragon', 'dragon.jpg');
-const pen = new Product('pen', 'pen.jpg');
-const pet = new Product('pet', 'pet-sweep.jpg');
-const scissors = new Product('scissors', 'scissors.jpg');
-const shark = new Product('shark', 'shark.jpg');
-const sweep = new Product('sweep', 'sweep.png');
-const tauntaun = new Product('tauntaun', 'tauntaun.jpg');
-const unicorn = new Product('unicorn', 'unicorn.jpg');
-const usb = new Product ('usb', 'usb.gif');
-const water = new Product ('water', 'water-can.jpg');
-const wine = new Product ('wine', 'wine-glass.jpg');
+    for (let i = 0; i < productsArray.length; i++) {
+        const product = new Product(productsArray[i].type, productsArray[i].src, productsArray[i].voted, productsArray[i].displayed);
+        console.log('current product:', product);
+        console.log('products array:', products);
+        products.push(product);
+    }
+}
+else {
+    //These are my instances of the new products that will run through my constructor function
+    const bag = new Product('bag', 'bag.jpg'); //img needs to be a string because we are passing it through the constructor function
+    const banana = new Product('banana', 'banana.jpg');
+    const bathroom = new Product('bathroom', 'bathroom.jpg');
+    const boots = new Product('boots', 'boots.jpg');
+    const breakfast = new Product('breakfast', 'breakfast.jpg');
+    const bubblegum = new Product('bubblegum', 'bubblegum.jpg');
+    const chair = new Product('chair', 'chair.jpg');
+    const cthulhu = new Product ('cthulhu', 'cthulhu.jpg');
+    const dog = new Product('dog', 'dog-duck.jpg');
+    const dragon = new Product('dragon', 'dragon.jpg');
+    const pen = new Product('pen', 'pen.jpg');
+    const pet = new Product('pet', 'pet-sweep.jpg');
+    const scissors = new Product('scissors', 'scissors.jpg');
+    const shark = new Product('shark', 'shark.jpg');
+    const sweep = new Product('sweep', 'sweep.png');
+    const tauntaun = new Product('tauntaun', 'tauntaun.jpg');
+    const unicorn = new Product('unicorn', 'unicorn.jpg');
+    const usb = new Product ('usb', 'usb.gif');
+    const water = new Product ('water', 'water-can.jpg');
+    const wine = new Product ('wine', 'wine-glass.jpg');
 
-const products = [bag,banana,bathroom,boots,breakfast,bubblegum,chair,cthulhu,dog,dragon,pen,pet,scissors,shark,sweep,tauntaun,unicorn,usb,water,wine];
+    // const products = [bag,banana,bathroom,boots,breakfast,bubblegum,chair,cthulhu,dog,dragon,pen,pet,scissors,shark,sweep,tauntaun,unicorn,usb,water,wine];
+    products = [bag,banana,bathroom,boots,breakfast,bubblegum,chair,cthulhu,dog,dragon,pen,pet,scissors,shark,sweep,tauntaun,unicorn,usb,water,wine];
+}
+
+
 
 console.log(products); //This is a good breakpoint
 
-
+//removed for loop because it was causing problems down in my clickHandler function
 appendRandomProduct();
 
 
@@ -58,14 +72,7 @@ function clickHandler (e) {
     while (game.firstChild) {
         game.removeChild(game.firstChild);
     }
-    // for (let i = 0; i < products.length; i++) {
-    //     var img = [];
-    //     image.parentNode.removenextSibling();
 
-    // }
-    // create a for loop to remove all of the images in the DOM
-    // get all of the images
-    //loop through all the images and inside of the loop I want to remove each individual image
 
     appendRandomProduct();
 
@@ -76,12 +83,7 @@ function clickHandler (e) {
     }
 }
 
-// function appendRandomProduct (){
-//     const game = document.getElementById('game');
-//     const randomProduct = products[Math.floor(Math.random() * products.length)];
-//     const randomProductEle = randomProduct.render(); //returns img element
-//     game.appendChild(randomProductEle);
-// }
+
 
 function appendRandomProduct (){
     const tempArray = [];
@@ -99,24 +101,6 @@ function appendRandomProduct (){
     } while (tempArray.length < 3);
 }
 
-//     for (let i = 0; i < 3; i++){
-//         const randomProduct = products[Math.floor(Math.random() * products.length)];
-//         if (tempArray.includes(randomProduct)){
-//             i = i - 1;
-//         }
-//         else {
-//             const randomProductEle = randomProduct.render();
-//             game.appendChild(randomProductEle);
-//             randomProduct.wasDisplayed();
-//             tempArray.push(randomProduct);
-            
-
-//         }
-//     }
-// }
-
-
-
 
 function endGame () {
     const game = document.getElementById('game');
@@ -133,6 +117,10 @@ function drawChart () {
     const productNames = [];
     const votedData= [];
 
+    for (let i =0; i < products.length; i++){
+        productsNames.push(products[i].type);
+        voted
+    }
     for ( let i = 0; i < products.length; i++) {
         const product = products[i];
         console.log(product);
@@ -163,8 +151,8 @@ function drawChart () {
                     text: 'Products Voted'
                 }
             }
-         }
+        }
     );
- }
+}
 
 
