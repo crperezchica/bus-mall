@@ -1,9 +1,11 @@
 
-function Product(type, src) {
+//constructor function for product options
+function Product(type, src, voted) {
     this.type = type;
     this.src = './images/' + src;
-    // this.sliced = sliced || 0;
-    this.voted = 0;
+    // this.src = src;
+    this.voted = voted || 0;
+    // this.voted = 0;
     this.displayed = 0;
 
     // allProducts.push(this);
@@ -24,3 +26,30 @@ Product.prototype.render = function (){
     ele.classList.add(this.type);
     return ele;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
