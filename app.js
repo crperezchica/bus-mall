@@ -1,5 +1,12 @@
 
 let clicks = 0;
+// let fruits = [];
+
+// if (localStorage.products) {
+//     console.log('what products');
+// }
+
+// const fruitsArray = JSON.parse(localStorage.)
 
 //These are my instances of the new products that will run through my constructor function
 const bag = new Product('bag', 'bag.jpg'); //img needs to be a string because we are passing it through the constructor function
@@ -27,9 +34,9 @@ const products = [bag,banana,bathroom,boots,breakfast,bubblegum,chair,cthulhu,do
 
 console.log(products); //This is a good breakpoint
 
-for (let i = 0; i < 3; i++){
-    appendRandomProduct();
-}
+
+appendRandomProduct();
+
 
 const game = document.getElementById('game');
 game.addEventListener('click', clickHandler);
@@ -45,11 +52,23 @@ function clickHandler (e) {
         }
     }
 
-
-
     clickedProduct.remove();
+    
+    let game = document.getElementById('game');
+    while (game.firstChild) {
+        game.removeChild(game.firstChild);
+    }
+    // for (let i = 0; i < products.length; i++) {
+    //     var img = [];
+    //     image.parentNode.removenextSibling();
+
+    // }
+    // create a for loop to remove all of the images in the DOM
+    // get all of the images
+    //loop through all the images and inside of the loop I want to remove each individual image
 
     appendRandomProduct();
+
 
     clicks++;
     if (clicks >=  20 ) {
@@ -57,12 +76,46 @@ function clickHandler (e) {
     }
 }
 
+// function appendRandomProduct (){
+//     const game = document.getElementById('game');
+//     const randomProduct = products[Math.floor(Math.random() * products.length)];
+//     const randomProductEle = randomProduct.render(); //returns img element
+//     game.appendChild(randomProductEle);
+// }
+
 function appendRandomProduct (){
+    const tempArray = [];
     const game = document.getElementById('game');
-    const randomProduct = products[Math.floor(Math.random() * products.length)];
-    const randomProductEle = randomProduct.render(); //returns img element
-    game.appendChild(randomProductEle);
+    do {
+        const randomProduct = products[Math.floor(Math.random() * products.length)];
+        console.log ('randomProduct:', randomProduct);
+        console.log('temparry:', tempArray);
+        if (!tempArray.includes(randomProduct)) {
+            const randomProductEle = randomProduct.render();
+            game.appendChild(randomProductEle);
+            randomProduct.wasDisplayed();
+            tempArray.push(randomProduct);
+        }
+    } while (tempArray.length < 3);
 }
+
+//     for (let i = 0; i < 3; i++){
+//         const randomProduct = products[Math.floor(Math.random() * products.length)];
+//         if (tempArray.includes(randomProduct)){
+//             i = i - 1;
+//         }
+//         else {
+//             const randomProductEle = randomProduct.render();
+//             game.appendChild(randomProductEle);
+//             randomProduct.wasDisplayed();
+//             tempArray.push(randomProduct);
+            
+
+//         }
+//     }
+// }
+
+
 
 
 function endGame () {
@@ -72,6 +125,7 @@ function endGame () {
     console.table(products);
     drawChart(); //This will call the chart to create once the game ends. 
 }
+
 
 function drawChart () {
 
@@ -109,9 +163,8 @@ function drawChart () {
                     text: 'Products Voted'
                 }
             }
-        }
+         }
     );
-}
-
+ }
 
 
