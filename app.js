@@ -1,5 +1,6 @@
 
 let clicks = 0;
+let displayed = 0;
 let products = [];
 
 if (localStorage.products) {
@@ -19,26 +20,26 @@ if (localStorage.products) {
 }
 else {
     //These are my instances of the new products that will run through my constructor function
-    const bag = new Product('bag', 'bag.jpg'); //img needs to be a string because we are passing it through the constructor function
-    const banana = new Product('banana', 'banana.jpg');
-    const bathroom = new Product('bathroom', 'bathroom.jpg');
-    const boots = new Product('boots', 'boots.jpg');
-    const breakfast = new Product('breakfast', 'breakfast.jpg');
-    const bubblegum = new Product('bubblegum', 'bubblegum.jpg');
-    const chair = new Product('chair', 'chair.jpg');
-    const cthulhu = new Product ('cthulhu', 'cthulhu.jpg');
-    const dog = new Product('dog', 'dog-duck.jpg');
-    const dragon = new Product('dragon', 'dragon.jpg');
-    const pen = new Product('pen', 'pen.jpg');
-    const pet = new Product('pet', 'pet-sweep.jpg');
-    const scissors = new Product('scissors', 'scissors.jpg');
-    const shark = new Product('shark', 'shark.jpg');
-    const sweep = new Product('sweep', 'sweep.png');
-    const tauntaun = new Product('tauntaun', 'tauntaun.jpg');
-    const unicorn = new Product('unicorn', 'unicorn.jpg');
-    const usb = new Product ('usb', 'usb.gif');
-    const water = new Product ('water', 'water-can.jpg');
-    const wine = new Product ('wine', 'wine-glass.jpg');
+    const bag = new Product('bag', './images/bag.jpg'); //img needs to be a string because we are passing it through the constructor function
+    const banana = new Product('banana', './images/banana.jpg');
+    const bathroom = new Product('bathroom', '/images/bathroom.jpg');
+    const boots = new Product('boots', './images/boots.jpg');
+    const breakfast = new Product('breakfast', './images/breakfast.jpg');
+    const bubblegum = new Product('bubblegum', './images/bubblegum.jpg');
+    const chair = new Product('chair', './images/chair.jpg');
+    const cthulhu = new Product ('cthulhu', './images/cthulhu.jpg');
+    const dog = new Product('dog', './images/dog-duck.jpg');
+    const dragon = new Product('dragon', './images/dragon.jpg');
+    const pen = new Product('pen', './images/pen.jpg');
+    const pet = new Product('pet', './images/pet-sweep.jpg');
+    const scissors = new Product('scissors', './images/scissors.jpg');
+    const shark = new Product('shark', './images/shark.jpg');
+    const sweep = new Product('sweep', './images/sweep.png');
+    const tauntaun = new Product('tauntaun', './images/tauntaun.jpg');
+    const unicorn = new Product('unicorn', './images/unicorn.jpg');
+    const usb = new Product ('usb', './images/usb.gif');
+    const water = new Product ('water', './images/water-can.jpg');
+    const wine = new Product ('wine', './images/wine-glass.jpg');
 
     // const products = [bag,banana,bathroom,boots,breakfast,bubblegum,chair,cthulhu,dog,dragon,pen,pet,scissors,shark,sweep,tauntaun,unicorn,usb,water,wine];
     products = [bag,banana,bathroom,boots,breakfast,bubblegum,chair,cthulhu,dog,dragon,pen,pet,scissors,shark,sweep,tauntaun,unicorn,usb,water,wine];
@@ -108,6 +109,7 @@ function endGame () {
     
     console.table(products);
     drawChart(); //This will call the chart to create once the game ends. 
+    localStorage.setItem('products', JSON.stringify(products));
 }
 
 
@@ -117,16 +119,16 @@ function drawChart () {
     const productNames = [];
     const votedData= [];
 
-    for (let i =0; i < products.length; i++){
-        productsNames.push(products[i].type);
-        voted
+    for (let i = 0; i < products.length; i++){
+        productNames.push(products[i].type);
+        votedData.push(products[i].voted);
     }
-    for ( let i = 0; i < products.length; i++) {
-        const product = products[i];
-        console.log(product);
-        productNames.push(product.type);
-        votedData.push(product.voted);
-    }
+    // for ( let i = 0; i < products.length; i++) {
+    //     const product = products[i];
+    //     console.log(product);
+    //     productNames.push(product.type);
+    //     votedData.push(product.voted);
+    // }
     //Product {type: "bag", src: "./images/bag.jpg", voted: 0} 
     const chartCanvas = document.getElementById('chart');
     const chartCtx = chartCanvas.getContext('2d');
