@@ -1,3 +1,22 @@
+body {
+    background-color: lightslategray;
+}
+
+img{
+   display: block;
+    margin: auto;
+    width: 30%;
+section h1 {
+    font-family: 'Patua One', cursive;
+}
+
+h2 {
+    font-family: 'Patua One', cursive;
+    align: center;
+}
+ 
+}
+
 #game{
     display:flex;
     justify-content: space-around;
@@ -5,6 +24,6 @@
 }
 
 #game img{
-    height: 100px;
-    width: 100px;
+    height: 200px;
+    width: 300px;
 }
