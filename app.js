@@ -81,6 +81,7 @@ function clickHandler (e) {
     clicks++;
     if (clicks >=  20 ) {
         endGame();
+        alert('The End! Scroll below to see your production selections.');
     }
 }
 
@@ -106,7 +107,7 @@ function appendRandomProduct (){
 function endGame () {
     const game = document.getElementById('game');
     game.removeEventListener('click', clickHandler);
-    
+
     console.table(products);
     drawChart(); //This will call the chart to create once the game ends. 
     localStorage.setItem('products', JSON.stringify(products));
