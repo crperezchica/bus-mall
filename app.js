@@ -81,7 +81,7 @@ function clickHandler (e) {
     clicks++;
     if (clicks >=  20 ) {
         endGame();
-        alert('The End! Scroll below to see your production selections.');
+        alert('The End! Scroll down to see a graph of the products you selected.');
     }
 }
 
