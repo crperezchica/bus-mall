@@ -22,7 +22,7 @@ else {
     //These are my instances of the new products that will run through my constructor function
     const bag = new Product('bag', './images/bag.jpg'); //img needs to be a string because we are passing it through the constructor function
     const banana = new Product('banana', './images/banana.jpg');
-    const bathroom = new Product('bathroom', '/images/bathroom.jpg');
+    const bathroom = new Product('bathroom', './images/bathroom.jpg');
     const boots = new Product('boots', './images/boots.jpg');
     const breakfast = new Product('breakfast', './images/breakfast.jpg');
     const bubblegum = new Product('bubblegum', './images/bubblegum.jpg');
